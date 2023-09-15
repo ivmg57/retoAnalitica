@@ -1,0 +1,14 @@
+Cómo correr el código de análisis estadístico en Python
+
+Preparativos:
+
+Asegúrate de tener Python instalado en tu sistema. Si no lo tienes, puedes descargarlo desde python.org.
+Instala las bibliotecas pandas, matplotlib, seaborn y numpy.
+Asegúrate de tener el archivo clientes-centro-comercial.csv en la misma carpeta donde planeas guardar y ejecutar el script de Python.
+
+Leer el output:
+
+Descripción General de los Datos: El código imprimirá las primeras filas del conjunto de datos y una descripción estadística de las variables numéricas.
+Diagramas de Cajas y Bigotes: Se mostrarán gráficos de cajas y bigotes para cada variable numérica. Estos gráficos son útiles para identificar la distribución de los datos y posibles valores atípicos.
+Histogramas: Se mostrarán histogramas para cada variable numérica. Estos gráficos ofrecen una visión general de la distribución de cada variable.
+Mapa de Calor para la Matriz de Correlación: Finalmente, se mostrará un mapa de calor para la matriz de correlación de las variables numéricas. Este gráfico es útil para entender las relaciones entre diferentes variables.

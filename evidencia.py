@@ -68,3 +68,30 @@ plt.xlabel('Unión Europea')
 plt.ylabel('Año')
 plt.gca().invert_yaxis()
 plt.show()
+
+from scipy.stats import linregress
+
+# Filtrar datos para incluir solo las regiones de interés
+regions_of_interest = ['Latin America & Caribbean', 'Europe & Central Asia']
+filtered_data = df[df['Country Name'].isin(regions_of_interest)]
+
+# Pivotear los datos para que cada fila represente un año y cada columna represente una región
+pivoted_data = filtered_data.pivot(index='Year', columns='Country Name', values='Value')
+
+# Eliminar filas que tengan valores NaN para asegurar una comparación justa
+pivoted_data.dropna(inplace=True)
+
+# Calcular la regresión lineal y el coeficiente de determinación R^2
+slope, intercept, r_value, p_value, std_err = linregress(pivoted_data['Latin America & Caribbean'], pivoted_data['Europe & Central Asia'])
+r_squared = r_value ** 2
+
+# Crear el scatterplot
+plt.figure(figsize=(10, 8))
+sns.scatterplot(x=pivoted_data['Latin America & Caribbean'], y=pivoted_data['Europe & Central Asia'], label=f'Scatterplot')
+sns.regplot(x=pivoted_data['Latin America & Caribbean'], y=pivoted_data['Europe & Central Asia'], scatter=False, color='red', label=f'Regresión Lineal (R^2 = {r_squared:.2f})')
+plt.title('Comparación de la Densidad de Servidores entre Latin America & Caribbean y Europe & Central Asia')
+plt.xlabel('Densidad de Servidores en Latin America & Caribbean')
+plt.ylabel('Densidad de Servidores en Europe & Central Asia')
+plt.legend()
+
+plt.show()
